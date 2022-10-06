@@ -6,16 +6,6 @@ class User < ApplicationRecord
 
   has_many:books,dependent: :destroy
 
-  has_one_attached:image
-
-  def get_image
-    if image.attached?
-      image
-    else
-      'no_image.jpg'
-    end
-  end
-
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path=Rails.root.join('app/assetsimages/no_image.jpg')
