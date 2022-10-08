@@ -1,19 +1,21 @@
 class UsersController < ApplicationController
-  def get_image
-    if image.attached?
-      image
-    else
-      'no_image.jpg'
-    end
-  end
 
   def index
     @users=User.all
+    @book=Book.new
+  end
+
+  def create
+    @book=Book.new(book_params)
+    @book.user_id=current_user.id
+    @book.save
+    redirect_to books_path
   end
 
   def show
     @user=User.find(params[:id])
     @books=@user.books
+    @book=Book.new
   end
 
   def edit
