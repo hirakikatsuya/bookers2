@@ -1,8 +1,17 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>Editing Book</h1>
 <%= form_with model:@book do |f| %>
-<%= f.label:title %><br>
-  <%= f.text_field:book_name %><br>
+  <%= f.label:title %><br>
+  <%= f.text_field:title %><br>
   <%= f.label:opinion %><br>
   <%= f.text_field:body %><br>
   <%= f.submit'Update Book' %>
-  <% end %>
+<% end %>

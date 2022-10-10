@@ -1,15 +1,18 @@
 class Book < ApplicationRecord
   belongs_to:user
 
-   has_one_attached:image
+  has_one_attached:image
 
-   def get_image
-     if image.attached?
-       image
-     else
-       'no_image.jpg'
-     end
-   end
+  validates:title,{presence:true}
+  validates:body,{presence:true,length:{maximum:200}}
+
+  def get_image
+    if image.attached?
+      image
+    else
+      'no_image.jpg'
+    end
+  end
 
   def get_profile_image(width,height)
     unless profile_image.attached?
