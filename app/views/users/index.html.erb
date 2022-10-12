@@ -1,17 +1,26 @@
-<%= render partial: 'books/infonew',locals:{book:@book,user:current_user}%>
-<h1>Users</h1>
-
-<table>
-  <tr>
-    <th>images</th>
-    <th>name</th>
-    <th></th>
-  </tr>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag user.get_profile_image(80,80) %></td>
-    <td><%= user.name %></td>
-    <td><%= link_to 'Show',user_path(user.id) %></td>
-  </tr>
-</table>
-<% end %>
+<div class="container px-3 px-sm-0">
+  <div class="row">
+    <%= render partial: 'books/infonew',locals:{book:@book ,user:current_user} %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.get_profile_image(80,80) %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to 'Show',user_path(user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
